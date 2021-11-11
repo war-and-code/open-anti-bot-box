@@ -1,0 +1,12 @@
+[Unit]
+Description=Gunicorn instance to serve toy app
+After=network.target
+
+[Service]
+User=vagrant
+Group=www-data
+WorkingDirectory=/vagrant/toyapp
+ExecStart=gunicorn --workers 3 --bind 0.0.0.0:8888 wsgi:app
+
+[Install]
+WantedBy=multi-user.target
